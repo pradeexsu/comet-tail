@@ -3,7 +3,7 @@
     --border-color: #272727;
     --text-color: white;
     --selection-basic: rgb(84, 84, 253);
-    --send-button: #2844e4;
+    --send-button: #4d63e4;
     --border-width: 1px;
     --uri-font: 'Open Sans', sans-serif;
     --status-font: Arial, Helvetica, sans-serif;
@@ -24,11 +24,29 @@ body {
     color: white;
 }
 
+header{
+    width: inherit;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    margin-left: 10vw;
+    user-select: none;
+}
+header h1{
+    width: inherit;
+    color: var(--send-button);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+header h1 span{
+    font-weight: lighter;
+    color: white;
+}
 .outer {
     display: flex;
     flex-direction: row;
-    height: 80vh;
-    margin-top: 10vh;
+    height: 70vh;
+    /* margin-top: 10vh; */
     margin-left: 10vw;
     margin-right: 10vw;
     border: var(--border-width) solid var(--border-color);
