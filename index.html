@@ -27,20 +27,12 @@
                     <option value="PUT" class="option-put"> PUT </option>
                     <option value="DELETE" class="option-delete"> DELETE </option>
                 </select>
-                <input type="url" id="input-uri" placeholder="https://jsonplaceholder.typicode.com/posts/">
+                <input type="url" id="input-uri" placeholder="https://jsonplaceholder.typicode.com/posts/" value="https://jsonplaceholder.typicode.com/todos/1">
                 <button id="send-request">Send</button>
             </div>
             <div>
 
-<textarea id="code">{
-    "_id": 1,
-    "name": "Tiger Nixon",
-    "salary": 320800,
-    "age": 61,
-    "profile_image_uri": "https://i.ibb.co/CmhK6jc/image.png",
-    "email": "tiger@nixon.com",
-    "gender": "male"
-}</textarea>
+<textarea id="code" placeholder="body object goese here ..."></textarea>
             </div>
         </div>
             <div class="slider">&nbsp;</div>
@@ -58,15 +50,7 @@
                     0 B
                 </div>
             </div>
-            <textarea  id="output" readonly>{
-    "_id": 1,
-    "name": "Tiger Nixon",
-    "salary": 320800,
-    "age": 61,
-    "profile_image_uri": "https://i.ibb.co/CmhK6jc/image.png",
-    "email": "tiger@nixon.com",
-    "gender": "male"
-}</textarea>
+            <textarea  id="output" readonly placeholder="response object goese here"></textarea>
         </div>
     </div>
 
@@ -89,6 +73,7 @@
     <link rel="stylesheet" href="./public/codemirror/js/features/foldcode/foldgutter.min.css">
     <script src="./public/codemirror/js/features/foldcode/foldgutter.min.js"></script>
     <script src="./public/codemirror/js/features/foldcode/indent-fold.min.js"></script>
+    <script src="./public/codemirror/js/features/placeholder.js"></script>
 
     <!-- <script src="/public/codemirror/languages/css.min.js"></script> -->
     <!-- <script src="/public/codemirror/languages/xml.min.js"></script> -->
