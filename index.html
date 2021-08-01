@@ -27,21 +27,22 @@
                     <option value="PUT" class="option-put"> PUT </option>
                     <option value="DELETE" class="option-delete"> DELETE </option>
                 </select>
-                <input type="url" id="input-uri" placeholder="https://jsonplaceholder.typicode.com/posts/" value="https://jsonplaceholder.typicode.com/todos/1">
+                <input type="url" id="input-uri" placeholder="https://jsonplaceholder.typicode.com/posts/"
+                    value="https://jsonplaceholder.typicode.com/todos/1">
                 <button id="send-request">Send</button>
             </div>
             <div>
 
-<textarea id="code" placeholder="body object goese here ..."></textarea>
+                <textarea id="code" placeholder="body object goese here ..."></textarea>
             </div>
         </div>
-            <div class="slider">&nbsp;</div>
+        <div class="slider">&nbsp;</div>
         <div class="block block-2">
             <!-- <img id="loading" src="/public/imgs/loading_small.png"> -->
             <div class="status-container">
 
                 <div id="status-request">
-                    200 <span id="status" >OK</span>
+                    200 <span id="status">OK</span>
                 </div>
                 <div id="query-time">
                     2.40 s
@@ -50,17 +51,22 @@
                     0 B
                 </div>
             </div>
-            <textarea  id="output" readonly placeholder="response object goese here"></textarea>
-        </div>
-    </div>
+            <div class="load-wrapper">
+                <div class="load-5">
+                    <div>
+                        <p>Loading...</p>
+                        <div class="ring-2">
+                            <div class="ball-holder">
+                                <div class="ball"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="load-5" >
-        <p>Loading 5</p>
-        <div class="ring-2">
-          <div class="ball-holder">
-            <div class="ball"></div>
-          </div>
+            <textarea id="output" readonly placeholder="response object goese here"></textarea>
         </div>
+
     </div>
 
     <script src="./public/moveable-divs.js"></script>
@@ -81,7 +87,7 @@
     <!-- <script src="/public/codemirror/languages/clike.min.js"></script> -->
     <script src="./public/script.js"></script>
     <!-- <script src="/public/script.js"></script> -->
-    
+
 
 </body>
 
