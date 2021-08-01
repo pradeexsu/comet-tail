@@ -3,11 +3,13 @@ theIDE = {}
 theAnotherIDE = {}
 theTheme = "base16-dark"
 
-theLoader = document.querySelector('.load-5')
+theLoader = document.querySelector('.load-wrapper')
 requestType = document.getElementById('request-type')
 requestUri = document.getElementById('input-uri')
 status = document.getElementById('input-uri')
 statusButton = document.querySelector('#status-request')
+
+// let loader = `<div class="load-wrapper"><div class="load-5" ><div><p>Loading ...</p><div class="ring-2"><div class="ball-holder"><div class="ball"></div></div></div></div></div></div>`
 
 color = {
     red:'#f3533a',
@@ -128,6 +130,8 @@ function changed(evt){
 
 function startloader(){
     theLoader.style.display = "block"
+    
+
 }
 function endloader() {
     theLoader.style.display = "none"
@@ -161,7 +165,7 @@ async function send() {
 
         }).then(()=>{
             endloader()
-            setResponse(501)
+            setResponse(200)
         })
 }
 
@@ -182,3 +186,4 @@ function setResponse(errorCode){
             break
     }
 }
+endloader()

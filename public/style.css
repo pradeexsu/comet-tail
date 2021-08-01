@@ -236,9 +236,27 @@ input[type=url]::-moz-selection {
     animation: loadingE 1.3s linear infinite;
 }
 
-.load-5{
-    display: none;
+.block  .load-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0000003f;
 }
+
+.load-5 {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    top: 40%;
+    height: 45px;
+    width: 45px;
+}
+
 @keyframes loadingE {
     0% {
         transform: rotate(0deg);
@@ -273,4 +291,8 @@ input[type=url]::-moz-selection {
     height: 16px;
     border-radius: 100%;
     background: var(--send-button);
+}
+
+.load-wrapper {
+    display: none;
 }
