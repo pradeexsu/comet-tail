@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comet API Tester</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/codemirror/css/codemirror.min.css">
+    <link rel="stylesheet" href="./public/style.css">
+    <!-- <link rel="stylesheet" href="/public/codemirror/themes/ambiance.min.css"> -->
+    <link rel="stylesheet" href="/public/codemirror/themes/all.css">
+
+</head>
+
+<body>
+    <div class="outer">
+        <div class="block block-1">
+            <!-- Block  -->
+            <div class="uri-container">
+                <select id="request-type">
+                    <option value="POST" class="option-post"> POST </option>
+                    <option value="GET" selected class="option-get"> GET </option>
+                    <option value="PUT" class="option-put"> PUT </option>
+                    <option value="DELETE" class="option-delete"> DELETE </option>
+                </select>
+                <input type="url" id="input-uri" placeholder="https://jsonplaceholder.typicode.com/posts/">
+                <button id="send-request">Send</button>
+            </div>
+            <div>
+
+<textarea id="code">{
+    "_id": 1,
+    "name": "Tiger Nixon",
+    "salary": 320800,
+    "age": 61,
+    "profile_image_uri": "https://i.ibb.co/CmhK6jc/image.png",
+    "email": "tiger@nixon.com",
+    "gender": "male"
+}</textarea>
+            </div>
+        </div>
+            <div class="slider">&nbsp;</div>
+        <div class="block block-2">
+            <!-- <img id="loading" src="/public/imgs/loading_small.png"> -->
+            <div class="status-container">
+
+                <div id="status-request">
+                    200 <span id="status" >OK</span>
+                </div>
+                <div id="query-time">
+                    2.40 s
+                </div>
+                <div id="data-size">
+                    0 B
+                </div>
+            </div>
+            <textarea  id="output" readonly>{
+    "_id": 1,
+    "name": "Tiger Nixon",
+    "salary": 320800,
+    "age": 61,
+    "profile_image_uri": "https://i.ibb.co/CmhK6jc/image.png",
+    "email": "tiger@nixon.com",
+    "gender": "male"
+}</textarea>
+        </div>
+    </div>
+
+    <div class="load-5" >
+        <p>Loading 5</p>
+        <div class="ring-2">
+          <div class="ball-holder">
+            <div class="ball"></div>
+          </div>
+        </div>
+    </div>
+
+    <script src="/public/moveable-divs.js"></script>
+    <script src="/public/jQuery/jquery.min.js"></script>
+    <script src="/public/codemirror/js/codemirror.min.js"></script>
+    <script src="/public/codemirror/languages/javascript.min.js"></script>
+    <!-- <script src="/public/codemirror/js/features/active-line.min.js"></script> -->
+    <script src="/public/codemirror/js/features/foldcode/brace-fold.min.js"></script>
+    <script src="/public/codemirror/js/features/foldcode/foldcode.min.js"></script>
+    <link rel="stylesheet" href="/public/codemirror/js/features/foldcode/foldgutter.min.css">
+    <script src="/public/codemirror/js/features/foldcode/foldgutter.min.js"></script>
+    <script src="/public/codemirror/js/features/foldcode/indent-fold.min.js"></script>
+
+    <!-- <script src="/public/codemirror/languages/css.min.js"></script> -->
+    <!-- <script src="/public/codemirror/languages/xml.min.js"></script> -->
+    <!-- <script src="/public/codemirror/languages/htmlmixed.min.js"></script> -->
+    <!-- <script src="/public/codemirror/languages/clike.min.js"></script> -->
+    <script src="/public/script.js"></script>
+    <!-- <script src="/public/script.js"></script> -->
+    
+
+</body>
+
+</html>

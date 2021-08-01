@@ -1,0 +1,276 @@
+:root {
+    --brand-dark: #1a1a1a;
+    --border-color: #272727;
+    --text-color: white;
+    --selection-basic: rgb(84, 84, 253);
+    --send-button: #2844e4;
+    --border-width: 1px;
+    --uri-font: 'Open Sans', sans-serif;
+    --status-font: Arial, Helvetica, sans-serif;
+    --border-radiai: 0px;
+    --success-color: #67e24b;
+}
+
+* {
+    border-radius: var(--border-radiai);
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+}
+
+body {
+    margin: 0;
+    background: var(--brand-dark);
+    color: white;
+}
+
+.outer {
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+    margin-top: 10vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    border: var(--border-width) solid var(--border-color);
+}
+
+.block {
+    width: 50%;
+}
+
+.block-1 {
+    background-color: var(--brand-dark);
+    resize: horizontal;
+    /* resize vertical */
+    overflow: hidden;
+    min-width: 25%;
+    /* resize works for overflow other than visible */
+}
+
+#code {
+    background-color: var(--brand-dark);
+    outline: none;
+    border: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+#code::selection {
+    background-color: var(--selection-basic);
+}
+
+#output {
+    background-color: var(--brand-dark);
+    outline: none;
+    border: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.block-2 {
+    background-color: var(--brand-dark);
+    flex: 1;
+    /* adjust automatically */
+    min-width: 25%;
+    overflow: hidden;
+    /* hide overflow on small width */
+}
+
+.slider {
+    cursor: w-resize;
+    border: var(--border-width) solid var(--border-color);
+    background: var(--brand-dark);
+    background-color: transparent;
+    border-width: 0px 0px 0px 5px;
+    /* var(--border-width); */
+    user-select: none;
+    width: 0px;
+    /* margin-right: -10px; */
+}
+
+.uri-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background: var(--brand-dark);
+    height: 30px;
+}
+
+#input-uri {
+    outline: none;
+    background: none;
+    color: white;
+    border: none;
+    /* font-size: large; */
+    background: var(--brand-dark);
+    width: 100%;
+    min-width: 100px;
+    border-bottom: var(--border-width) solid var(--border-color);
+    margin-left: 20px;
+    font-family: var(--uri-font);
+}
+
+/* #input-rui::selection{
+        color: gray;
+    } */
+
+input[type=url]::-moz-selection {
+    background: #777;
+    color: white;
+}
+
+#request-type {
+    background: none;
+    border: none;
+    min-width: 100px;
+    max-width: 100px;
+    /* background: #035c94; */
+    padding: 5px;
+    color: #2727bd;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* font-weight: bold; */
+}
+
+#send-request {
+    background: none;
+    border: none;
+    font-size: medium;
+    min-width: 100px;
+    max-width: 100px;
+    padding: 5px;
+    background: var(--send-button);
+    margin: 0px;
+    color: white;
+}
+
+#send-request:hover {
+    background: #007eca;
+}
+
+#send-request:active {
+    background: #026eb1;
+    color: #ccc;
+}
+
+.status-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    background: var(--brand-dark);
+    height: 30px;
+    /* position: fixed; */
+    border-bottom: var(--border-width) solid var(--border-color);
+}
+
+#status-request {
+    background: var(--success-color);
+    font-weight: bold;
+}
+
+#status {
+    font-weight: lighter;
+}
+
+#query-time, #data-size {
+    background: #3f3f3f;
+}
+
+.status-container>div {
+    margin: 3px;
+    padding: 5px;
+    color: #eee;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    user-select: none;
+    font-size: 14px;
+    text-align: center;
+    font-family: var(--status-font);
+}
+
+.option-get {
+    color: blue;
+}
+
+.option-post {
+    color: green;
+}
+
+.option-put {
+    color: orangered;
+}
+
+.option-delete {
+    color: red;
+}
+
+/* .CodeMirror-foldgutter{
+    width: 1.2em;
+} */
+
+/* loading */
+
+/* 
+#loading {
+    -webkit-animation: rotation 2s infinite linear;
+    position: fixed;
+    z-index: 10;
+    width: 100px;
+    left: 50%;
+    top: 50%;
+}
+
+@-webkit-keyframes rotation {
+    from {
+            -webkit-transform: rotate(0deg);
+    }
+    to {
+            -webkit-transform: rotate(359deg);
+    }
+} */
+
+.load-5 .ball-holder {
+    animation: loadingE 1.3s linear infinite;
+}
+
+.load-5{
+    display: none;
+}
+@keyframes loadingE {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ring-2 {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    margin: 0 auto;
+    border: 4px solid var(--send-button);
+    border-radius: 100%;
+}
+
+.ball-holder {
+    position: absolute;
+    width: 12px;
+    height: 45px;
+    left: 17px;
+    top: 0px;
+}
+
+.ball {
+    position: absolute;
+    top: -11px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background: var(--send-button);
+}
