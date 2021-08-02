@@ -34,6 +34,17 @@ $(document).ready(() => {
         indentWithTabs: true,
         matchBrackets: true,
         lineWrapping: true,
+        closeBrackets: true,
+        autoCloseBrackets: [
+            {
+                left: '{',
+                right: '}'
+            },
+            {
+                left: '[',
+                right: ']'
+            },
+        ],
         foldGutter: true,
         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
         extraKeys: {
@@ -143,8 +154,11 @@ async function send() {
     let uri = requestUri.value
     let options = {
         method: method,
+        // credentials: 'same-origin',
         headers: {
-            "Content-type": "application/json; charset=UTF-8"
+            // mode:'no-cors',
+            "Content-type": "application/json; charset=UTF-8",
+            'Accept': 'application/json'
         }
     }
 
