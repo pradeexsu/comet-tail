@@ -314,3 +314,7 @@ input[type=url]::-moz-selection {
 .load-wrapper {
     display: none;
 }
+
+abbr{
+    text-decoration: none;
+}
