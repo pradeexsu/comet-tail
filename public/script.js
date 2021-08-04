@@ -17,6 +17,7 @@ color = {
     blue: '#5acfc9',
     green: '#8ad879',
     purple: '#752092',
+    black: '#000000',
 }
 
 $(document).ready(() => {
@@ -178,33 +179,34 @@ async function send() {
     }
 
     fetch(uri, options)
-        .then(response => response.json())
-        .then(json => {
+        .then(response => {
+            setResponse(response.status)
+            console.log('status: '+response.status)
+            
+            return response.json()
+        }).then(json => {
             let res = JSON.stringify(json, null, '\t')
             theAnotherIDE.setOption('value', res)
             return res
         }).then((res)=>{
             endloader()
-            setResponse(200)
         })
 }
 
 function setResponse(errorCode){
-    switch (errorCode) {
-        case 200:
-            statusButton.innerHTML = `200 <span id="status">OK</span>`
-            statusButton.style.background = color.green
-            break
-        case 500:
-            statusButton.innerHTML = `500 <span id="status">Invalid</span>`
-            statusButton.style.background = color.orange
-            break
+    let error_info = error_description[`${errorCode}`]
+    statusButton.innerHTML = `<abbr title="${error_info.title}"> ${errorCode} <span id="status">${error_info.msg}</span></abbr>`
 
-        default:
-            statusButton.innerHTML = `<span id="status">Error</span>`
-            statusButton.style.background = color.red
-            break
+    if (200<=errorCode && errorCode<=299 ) {
+            statusButton.style.background = color.green
+    }else if(300 <= errorCode && errorCode <=399){
+        statusButton.style.background = color.orange
+    }else if(400 <= errorCode && errorCode <=499){
+        statusButton.style.background = color.red
+    }else{
+        statusButton.style.background = color.black
     }
 }
 
 endloader()
+
