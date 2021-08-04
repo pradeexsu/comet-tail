@@ -147,37 +147,43 @@ function startloader(){
 function endloader() {
     theLoader.style.display = "none"
 }
+
+function isLocalhost(s) {
+    let re = /^(https?:\/\/)?(localhost:\d{4,5}$)/
+            // ^1                // ^2
+    let res = re.exec(s)
+    if(res===null)
+        return null
+    return 'http://'+res[2]
+}
+
 async function send() {
+    let uri = requestUri.value
+    localhost = isLocalhost(uri)
+    if(localhost)
+        requestUri.value = localhost
     startloader()
+    uri = requestUri.value
     let jsonBody = theIDE.getValue()
     let method = requestType.value
-    let uri = requestUri.value
     let options = {
         method: method,
-        // credentials: 'same-origin',
         headers: {
-            // mode:'no-cors',
-            "Content-type": "application/json; charset=UTF-8",
-            'Accept': 'application/json'
+            "Content-type": "application/json;",
         }
     }
 
-    if (method === 'POST') {
-        options.body= JSON.stringify(jsonBody)
+    if (method !== 'GET') {
+        options['body'] = JSON.stringify(jsonBody)
     }
 
     fetch(uri, options)
-        .then(response => {
-            // theAnotherIDE.setOption('value', response.json())
-
-            return response.json()
-        })
+        .then(response => response.json())
         .then(json => {
             let res = JSON.stringify(json, null, '\t')
-            // console.log(res)
             theAnotherIDE.setOption('value', res)
-
-        }).then(()=>{
+            return res
+        }).then((res)=>{
             endloader()
             setResponse(200)
         })
@@ -200,4 +206,5 @@ function setResponse(errorCode){
             break
     }
 }
+
 endloader()
