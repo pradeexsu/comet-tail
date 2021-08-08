@@ -14,9 +14,11 @@
     <!-- <link rel="stylesheet" href="./public/codemirror/themes/ambiance.min.css"> -->
     <link rel="stylesheet" href="./public/codemirror/themes/all.css">
     <link rel="shortcut icon" href="./public/imgs/comet.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
-    <script src="./public/jQuery/jquery.min.js"></script>
+    <!-- <script src="./public/jQuery/jquery.min.js"></script> -->
+    <!-- <script src="./public/jQuery/jquery-1.9.1.js"></script> -->
     <script src="./public/codemirror/js/codemirror.min.js"></script>
     <script src="./public/codemirror/languages/javascript.min.js"></script>
     <!-- <script src="/public/codemirror/js/features/active-line.min.js"></script> -->
@@ -26,12 +28,25 @@
     <script src="./public/codemirror/js/features/foldcode/foldgutter.min.js"></script>
     <script src="./public/codemirror/js/features/foldcode/indent-fold.min.js"></script>
     <script src="./public/codemirror/js/features/placeholder.js"></script>
+    <script type="text/javascript" src="./public/codemirror/addon/edit/matchbrackets.js"></script>
+    <script type="text/javascript" src="./public/codemirror/addon/edit/closebrackets.js"></script>
+    <script type="text/javascript" src="./public/codemirror/addon/edit/closetag.js"></script>
+    <script type="text/javascript" src="./public/codemirror/addon/edit/matchtags.js"></script>
+    <script type="text/javascript" src="./public/codemirror/addon/edit/trailingspace.js"></script>
+    <script type="text/javascript" src="./public/codemirror/addon/selection/selection-pointer.js"></script>
+    <script type="text/javascript" src="./public/codemirror/addon/selection/mark-selection.js"></script>
+
+    <script type="text/javascript" src="./public/codemirror/addon/search/match-highlighter.js"></script>
 
     <script src="./public/codemirror/addon/edit/closebrackets.js"></script>
     <script src="./public/status-info.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 <body>
+    
     <header>
         <div class="top-heading">
             <h1>
@@ -43,8 +58,8 @@
             </h1>
         </div>
     </header>
+
     <div class="outer">
-        <div class="block block-1">
             <!-- Block  -->
             <div class="uri-container">
                 <select id="request-type">
@@ -53,47 +68,46 @@
                     <option value="PUT" class="option-put"> PUT </option>
                     <option value="DELETE" class="option-delete"> DELETE </option>
                 </select>
-                <input type="url" id="input-uri" placeholder="https://jsonplaceholder.typicode.com/posts/"
-                    value="https://jsonplaceholder.typicode.com/todos/1">
+                <input type="url" id="input-uri" placeholder="API's uri goes here ..."
+                value="https://jsonplaceholder.typicode.com/todos/1">
                 <button id="send-request">Send</button>
             </div>
-            <div>
 
-                <textarea id="code" placeholder="body object goese here ..."></textarea>
+            <div class="block block-1">
+                <textarea id="code" placeholder="body object goes here..."></textarea>
             </div>
-        </div>
-        <div class="slider">&nbsp;</div>
-        <div class="block block-2">
-            <!-- <img id="loading" src="/public/imgs/loading_small.png"> -->
-            <div class="status-container">
 
+            <div class="slider">&nbsp;</div>
+
+            <div class="status-container">
                 <div id="status-request">
-                    200 <span id="status">OK</span>
+                    Status Code <span id="status">(Status)</span>
                 </div>
                 <div id="query-time">
-                    2.40 s
+                    time
                 </div>
                 <div id="data-size">
-                    0 B
+                    bytes
                 </div>
             </div>
-            <div class="load-wrapper">
-                <div class="load-5">
-                    <div>
-                        <p>Loading...</p>
-                        <br>
-                        <div class="ring-2">
-                            <div class="ball-holder">
-                                <div class="ball"></div>
+
+            <div class="block block-2">
+                <div class="load-wrapper">
+                    <div class="load-5">
+                        <div>
+                            <p>Loading...</p>
+                            <br>
+                            <div class="ring-2">
+                                <div class="ball-holder">
+                                    <div class="ball"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <textarea id="output" readonly placeholder="response object goese here"></textarea>
+                <textarea id="output" readonly placeholder="response object goese here"></textarea>
+            
         </div>
-
     </div>
 
     <script src="./public/moveable-divs.js"></script>
