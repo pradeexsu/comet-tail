@@ -30,7 +30,6 @@ header{
     margin-bottom: 20px;
     padding: 10px;
     margin-left: 10vw;
-    user-select: none;
 }
 header h1{
     width: inherit;
