@@ -9,7 +9,8 @@ requestUri = document.getElementById('input-uri')
 status = document.getElementById('input-uri')
 statusButton = document.querySelector('#status-request')
 
-// let loader = `<div class="load-wrapper"><div class="load-5" ><div><p>Loading ...</p><div class="ring-2"><div class="ball-holder"><div class="ball"></div></div></div></div></div></div>`
+responseTime = document.querySelector('#query-time')
+responseByte = document.querySelector('#data-size')
 
 color = {
     red:'#f3533a',
@@ -36,6 +37,7 @@ $(document).ready(() => {
         matchBrackets: true,
         lineWrapping: true,
         closeBrackets: true,
+        highlightSelectionMatches: {showToken: /\w/},
         autoCloseBrackets: [
             {
                 left: '{',
@@ -85,6 +87,7 @@ $(document).ready(() => {
         matchBrackets: true,
         lineWrapping: true,
         foldGutter: true,
+        highlightSelectionMatches: {showToken: /\w/},
         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
         extraKeys: {
             "Ctrl-Q": function (cm) {
@@ -177,15 +180,20 @@ async function send() {
     if (method !== 'GET') {
         options['body'] = JSON.stringify(jsonBody)
     }
+    const start = new Date().getTime()
 
     fetch(uri, options)
         .then(response => {
             setResponse(response.status)
             console.log('status: '+response.status)
-            
+            const end = new Date().getTime();
+            let duration =  end - start;
+            // if(duration>900)
+            responseTime.innerHTML = duration + ' ms'
             return response.json()
         }).then(json => {
             let res = JSON.stringify(json, null, '\t')
+            responseByte.innerHTML = JSON.stringify(json, null, '').length +' B'
             theAnotherIDE.setOption('value', res)
             return res
         }).then((res)=>{
