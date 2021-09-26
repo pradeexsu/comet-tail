@@ -8,6 +8,7 @@ requestType = document.getElementById('request-type')
 requestUri = document.getElementById('input-uri')
 status = document.getElementById('input-uri')
 statusButton = document.querySelector('#status-request')
+formatJSON = document.querySelector('#format-json')
 
 responseTime = document.querySelector('#query-time')
 responseByte = document.querySelector('#data-size')
@@ -119,6 +120,13 @@ $(document).ready(() => {
 
 document.getElementById('send-request').addEventListener('click', send)
 requestType.addEventListener('change', changed)
+formatJSON.addEventListener('click',()=>{
+    try {
+        theIDE.setValue( JSON.stringify(JSON.parse(theIDE.getValue()),null, 2))
+    } catch (error) {
+        console.error(error)
+    }
+})
 
 function changed(evt){
     value = evt.target.value
@@ -145,10 +153,8 @@ function changed(evt){
 
 function startloader(){
     theLoader.style.display = "block"
-    
-
 }
-function endloader() {
+function endloader(){
     theLoader.style.display = "none"
 }
 
