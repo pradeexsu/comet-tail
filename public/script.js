@@ -120,6 +120,7 @@ $(document).ready(() => {
 
 document.getElementById('send-request').addEventListener('click', send)
 requestType.addEventListener('change', changed)
+
 formatJSON.addEventListener('click',()=>{
     try {
         theIDE.setValue( JSON.stringify(JSON.parse(theIDE.getValue()),null, 2))
@@ -187,6 +188,10 @@ async function send() {
         options['body'] = JSON.stringify(jsonBody)
     }
     const start = new Date().getTime()
+    const loaderTimeout = setTimeout(()=>{
+        setResponse(408)
+        endloader()
+    },10000)
 
     fetch(uri, options)
         .then(response => {
@@ -194,7 +199,6 @@ async function send() {
             console.log('status: '+response.status)
             const end = new Date().getTime();
             let duration =  end - start;
-            // if(duration>900)
             responseTime.innerHTML = duration + ' ms'
             return response.json()
         }).then(json => {
@@ -203,19 +207,20 @@ async function send() {
             theAnotherIDE.setOption('value', res)
             return res
         }).then((res)=>{
+            clearTimeout(loaderTimeout)
             endloader()
         })
 }
 
-function setResponse(errorCode){
-    let error_info = error_description[`${errorCode}`]
-    statusButton.innerHTML = `<abbr title="${error_info.title}"> ${errorCode} <span id="status">${error_info.msg}</span></abbr>`
+function setResponse(statusCode){
+    let error_info = error_description[`${statusCode}`]
+    statusButton.innerHTML = `<abbr title="${error_info.title}"> ${statusCode} <span id="status">${error_info.msg}</span></abbr>`
 
-    if (200<=errorCode && errorCode<=299 ) {
+    if (200<=statusCode && statusCode<=299 ) {
             statusButton.style.background = color.green
-    }else if(300 <= errorCode && errorCode <=399){
+    }else if(300 <= statusCode && statusCode <=399){
         statusButton.style.background = color.orange
-    }else if(400 <= errorCode && errorCode <=499){
+    }else if(400 <= statusCode && statusCode <=499){
         statusButton.style.background = color.red
     }else{
         statusButton.style.background = color.black
